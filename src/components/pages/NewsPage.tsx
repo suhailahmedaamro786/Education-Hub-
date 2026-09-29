@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   Newspaper, 
   Search, 
@@ -32,6 +32,71 @@ export const NewsPage: React.FC = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+
+  useEffect(() => {
+    const syncArticleRoute = () => {
+      const path = selectedArticle ? `/news/${selectedArticle.slug}` : '/news';
+      if (window.location.pathname !== path) {
+        window.history.replaceState({}, '', path);
+      }
+    };
+
+    syncArticleRoute();
+
+    const description = selectedArticle?.excerpt || 'Verified educational news, scholarships, admissions, career guidance and student opportunities from Education Hub.';
+    document.title = selectedArticle
+      ? `${selectedArticle.title} | Education Hub`
+      : 'Education Hub – Learn • Grow • Succeed';
+
+    const setMeta = (name: string, content: string) => {
+      let tag = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute('name', name);
+        document.head.appendChild(tag);
+      }
+      tag.content = content;
+    };
+
+    const setOg = (property: string, content: string) => {
+      let tag = document.querySelector(`meta[property="${property}"]`) as HTMLMetaElement | null;
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute('property', property);
+        document.head.appendChild(tag);
+      }
+      tag.content = content;
+    };
+
+    setMeta('description', description);
+    setMeta('keywords', selectedArticle
+      ? 'internships in Pakistan 2026, latest internships Pakistan, internships for students Pakistan, internships for fresh graduates, paid internships Pakistan, remote internships Pakistan, technology internships Pakistan, student opportunities Pakistan'
+      : 'education Pakistan, scholarships, admissions, internships, jobs, student opportunities');
+    setOg('og:title', selectedArticle?.title || 'Education Hub – Learn • Grow • Succeed');
+    setOg('og:description', description);
+    setOg('og:type', selectedArticle ? 'article' : 'website');
+
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = window.location.origin + (selectedArticle ? `/news/${selectedArticle.slug}` : '/news');
+
+    const handlePopState = () => {
+      const match = window.location.pathname.match(/^\\/news\\/(.+)$/);
+      if (match) {
+        const article = articles.find(a => a.slug === decodeURIComponent(match[1]));
+        setSelectedArticleId(article?.id || null);
+      } else if (window.location.pathname === '/news') {
+        setSelectedArticleId(null);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [selectedArticle, articles, setSelectedArticleId]);
 
   const categories = ['All', 'Scholarships', 'Admissions', 'Tech & AI', 'Study Tips', 'Career Guidance'];
 
@@ -167,6 +232,90 @@ export const NewsPage: React.FC = () => {
             <div className="px-6 pt-2">
               <AdSlot placement="news_banner_468x60" />
             </div>
+
+            {/* Verified Internship Opportunities */}
+            {selectedArticle.internships && selectedArticle.internships.length > 0 && (
+              <section className="px-6 sm:px-8 pt-8">
+                <div className="rounded-2xl bg-[#0A192F] text-white p-5 sm:p-6 mb-6">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <p className="text-amber-300 text-[11px] font-extrabold uppercase tracking-wider">Apply Now</p>
+                      <h2 className="text-xl sm:text-2xl font-extrabold mt-1">Verified Internship Opportunities</h2>
+                    </div>
+                    <span className="text-xs font-bold bg-emerald-400/15 text-emerald-300 border border-emerald-300/20 px-3 py-1.5 rounded-full">
+                      Last Verified: 29 September 2026
+                    </span>
+                  </div>
+                  <p className="text-sm text-slate-300 mt-3 leading-relaxed">
+                    Only opportunities confirmed as open on an official employer or government source are listed here.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                  {selectedArticle.internships.map((internship) => (
+                    <article key={internship.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-md transition-shadow">
+                      <div className="flex items-start gap-3">
+                        <div className="w-11 h-11 rounded-xl bg-slate-100 flex items-center justify-center text-sm font-extrabold text-slate-700 shrink-0">
+                          {internship.company.split(' ').slice(0, 2).map(part => part[0]).join('').slice(0, 2).toUpperCase()}
+                        </div>
+                        <div className="min-w-0">
+                          <span className="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-extrabold border bg-emerald-50 text-emerald-700 border-emerald-200">
+                            🟢 {internship.status}
+                          </span>
+                          <h3 className="font-extrabold text-slate-900 text-lg leading-tight mt-2">{internship.title}</h3>
+                          <p className="text-xs font-semibold text-slate-500 mt-1">{internship.company}</p>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5 text-xs">
+                        {[
+                          ['Location', internship.location],
+                          ['Work Mode', internship.workMode],
+                          ['Deadline', internship.deadline],
+                          ['Stipend', internship.stipend],
+                          ['Duration', internship.duration],
+                          ['Education', internship.education]
+                        ].map(([label, value]) => (
+                          <div key={label} className="rounded-xl bg-slate-50 border border-slate-100 p-3">
+                            <p className="text-[10px] uppercase tracking-wider font-extrabold text-slate-400">{label}</p>
+                            <p className="font-semibold text-slate-700 mt-1 leading-relaxed">{value}</p>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="mt-4 rounded-xl border border-slate-100 p-3">
+                        <p className="text-[10px] uppercase tracking-wider font-extrabold text-slate-400">Eligibility</p>
+                        <p className="text-xs text-slate-700 mt-1 leading-relaxed">{internship.eligibility}</p>
+                        <p className="text-[10px] uppercase tracking-wider font-extrabold text-slate-400 mt-3">Skills / Field</p>
+                        <p className="text-xs text-slate-700 mt-1 leading-relaxed">{internship.skills}</p>
+                      </div>
+
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {internship.applicationUrl && internship.status === 'Verified / Open' && (
+                          <a
+                            href={internship.applicationUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#0A192F] text-amber-300 text-xs font-extrabold hover:bg-[#112240] transition-colors"
+                          >
+                            Apply Now <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+                        <a
+                          href={internship.officialSourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-slate-700 text-xs font-extrabold hover:bg-slate-50 transition-colors"
+                        >
+                          Official Source <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      </div>
+                      <p className="text-[10px] text-slate-400 mt-3">Verified on {internship.verifiedOn}</p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* Article Content */}
             <div className="p-6 sm:p-8 space-y-5 text-slate-800 text-sm sm:text-base leading-relaxed whitespace-pre-line font-normal">
