@@ -50,10 +50,8 @@ export const NewsPage: React.FC = () => {
 
     syncArticleRoute();
 
-    const description = selectedArticle?.excerpt || 'Verified educational news, scholarships, admissions, career guidance and student opportunities from Education Hub.';
-    document.title = selectedArticle
-      ? `${selectedArticle.title} | Education Hub`
-      : 'Education Hub – Learn • Grow • Succeed';
+    const description = selectedArticle?.metaDescription || selectedArticle?.excerpt || 'Verified educational news, scholarships, admissions, career guidance and student opportunities from Education Hub.';
+    document.title = selectedArticle?.seoTitle || (selectedArticle ? `${selectedArticle.title} | Education Hub` : 'Education Hub – Learn • Grow • Succeed');
 
     const setMeta = (name: string, content: string) => {
       let tag = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
@@ -79,8 +77,8 @@ export const NewsPage: React.FC = () => {
     setMeta('keywords', selectedArticle
       ? 'internships in Pakistan 2026, latest internships Pakistan, internships for students Pakistan, internships for fresh graduates, paid internships Pakistan, remote internships Pakistan, technology internships Pakistan, student opportunities Pakistan'
       : 'education Pakistan, scholarships, admissions, internships, jobs, student opportunities');
-    setOg('og:title', selectedArticle?.title || 'Education Hub – Learn • Grow • Succeed');
-    setOg('og:description', description);
+    setOg('og:title', selectedArticle?.ogTitle || selectedArticle?.seoTitle || selectedArticle?.title || 'Education Hub – Learn • Grow • Succeed');
+    setOg('og:description', selectedArticle?.ogDescription || description);
     setOg('og:type', selectedArticle ? 'article' : 'website');
 
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
@@ -89,7 +87,7 @@ export const NewsPage: React.FC = () => {
       canonical.rel = 'canonical';
       document.head.appendChild(canonical);
     }
-    canonical.href = window.location.origin + (selectedArticle ? `/news/${selectedArticle.slug}` : '/news');
+    canonical.href = selectedArticle?.canonicalUrl || (window.location.origin + (selectedArticle ? `/news/${selectedArticle.slug}` : '/news'));
 
     const handlePopState = () => {
       const match = window.location.pathname.match(/^\/news\/(.+)$/);
