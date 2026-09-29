@@ -34,6 +34,11 @@ These opportunities were checked on 29 September 2026 and were still presented a
   featured: true,
   status: 'Published',
   views: 0,
+  seoTitle: 'Latest Internship Opportunities in Pakistan 2026 – Students & Fresh Graduates',
+  metaDescription: 'Explore verified internship opportunities in Pakistan for students and fresh graduates, including eligibility, location, stipend, deadline and official application links.',
+  canonicalUrl: 'https://education-hub-dusky.vercel.app/news/latest-internships-pakistan-2026',
+  ogTitle: 'Latest Internship Opportunities in Pakistan 2026 – Students & Fresh Graduates',
+  ogDescription: 'Verified internship opportunities in Pakistan with eligibility, location, stipend, deadline and official application links.',
   internships: [
     {
       id: 'intern-cbd-ycp-2026',
