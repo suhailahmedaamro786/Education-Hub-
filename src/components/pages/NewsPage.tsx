@@ -40,11 +40,6 @@ export const NewsPage: React.FC = () => {
 
   const categories = ['All', 'Scholarships', 'Admissions', 'Tech & AI', 'Study Tips', 'Career Guidance'];
 
-  const selectedArticle = useMemo(() => {
-    if (!selectedArticleId) return null;
-    return articles.find(a => a.id === selectedArticleId) || null;
-  }, [articles, selectedArticleId]);
-
   useEffect(() => {
     const syncArticleRoute = () => {
       const path = selectedArticle ? `/news/${selectedArticle.slug}` : '/news';
@@ -97,7 +92,7 @@ export const NewsPage: React.FC = () => {
     canonical.href = window.location.origin + (selectedArticle ? `/news/${selectedArticle.slug}` : '/news');
 
     const handlePopState = () => {
-      const match = window.location.pathname.match(/^\\/news\\/(.+)$/);
+      const match = window.location.pathname.match(/^\/news\/(.+)$/);
       if (match) {
         const article = articles.find(a => a.slug === decodeURIComponent(match[1]));
         setSelectedArticleId(article?.id || null);
