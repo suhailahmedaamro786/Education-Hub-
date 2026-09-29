@@ -115,6 +115,26 @@ export interface EntryTest {
   }[];
 }
 
+export interface InternshipOpportunity {
+  id: string;
+  title: string;
+  company: string;
+  location: string;
+  workMode: 'On-site' | 'Hybrid' | 'Remote' | 'Not specified by the employer';
+  eligibility: string;
+  education: string;
+  skills: string;
+  stipend: string;
+  duration: string;
+  deadline: string;
+  applicationMethod: string;
+  officialSourceUrl: string;
+  applicationUrl?: string;
+  verifiedOn: string;
+  status: 'Verified / Open' | 'Needs Verification' | 'Closed / Expired';
+  logoUrl?: string;
+}
+
 export interface EducationalArticle {
   id: string;
   slug: string;
@@ -135,6 +155,7 @@ export interface EducationalArticle {
   featured: boolean;
   status: StatusType;
   views: number;
+  internships?: InternshipOpportunity[];
 }
 
 export interface StudyMaterial {
