@@ -13,6 +13,7 @@ export type AdType =
   | 'banner_728x90'
   | 'banner_300x250'
   | 'banner_468x60'
+  | 'banner_160x300'
   | 'banner_160x600'
   | 'banner_320x50'
   | 'native_banner'
@@ -63,8 +64,8 @@ export const ADSTERRA_CONFIG: Record<string, AdUnitConfig> = {
   homepage_banner_728x90: {
     placement: 'homepage_banner_728x90',
     adType: 'banner_728x90',
-    enabled: false,
-    code: ``, // <-- PASTE REAL ADSTERRA 728x90 BANNER CODE HERE
+    enabled: true,
+    code: "<script>\natOptions = {\n'key' : '7a362a2db66e5d0a1fbbb54f479b9632',\n'format' : 'iframe',\n'height' : 90,\n'width' : 728,\n'params' : {}\n};\n</script>\n<script src=\"https://www.highrevenueformat.com/7a362a2db66e5d0a1fbbb54f479b9632/invoke.js\"></script>",
     renderMode: 'iframe',
     dimensions: { width: 728, height: 90, minHeight: 90 },
   },
@@ -77,10 +78,20 @@ export const ADSTERRA_CONFIG: Record<string, AdUnitConfig> = {
   homepage_native: {
     placement: 'homepage_native',
     adType: 'native_banner',
-    enabled: false,
-    code: ``, // <-- PASTE REAL ADSTERRA NATIVE BANNER CODE HERE
+    enabled: true,
+    code: "<script async=\"async\" data-cfasync=\"false\" src=\"https://pl31569467.profitableratecpmnetwork.com/dcf69a0ffa89b1b9bc9f964ec328b2d9/invoke.js\"></script>\n\n<div id=\"container-dcf69a0ffa89b1b9bc9f964ec328b2d9\"></div>",
     renderMode: 'dom',
     dimensions: { width: '100%', minHeight: 160 },
+  },
+
+  /** Homepage 300x250 Medium Rectangle. */
+  homepage_banner_300x250: {
+    placement: 'homepage_banner_300x250',
+    adType: 'banner_300x250',
+    enabled: true,
+    code: "<script>\natOptions = {\n'key' : '0f33690cf56118e521125c48bacde0be',\n'format' : 'iframe',\n'height' : 250,\n'width' : 300,\n'params' : {}\n};\n</script>\n<script src=\"https://www.highrevenueformat.com/0f33690cf56118e521125c48bacde0be/invoke.js\"></script>",
+    renderMode: 'iframe',
+    dimensions: { width: 300, height: 250, minHeight: 250 },
   },
 
   // ==========================================
@@ -95,8 +106,8 @@ export const ADSTERRA_CONFIG: Record<string, AdUnitConfig> = {
   scholarships_native: {
     placement: 'scholarships_native',
     adType: 'native_banner',
-    enabled: false,
-    code: ``, // <-- PASTE REAL ADSTERRA NATIVE BANNER CODE HERE
+    enabled: true,
+    code: "<script async=\"async\" data-cfasync=\"false\" src=\"https://pl31569467.profitableratecpmnetwork.com/dcf69a0ffa89b1b9bc9f964ec328b2d9/invoke.js\"></script>\n\n<div id=\"container-dcf69a0ffa89b1b9bc9f964ec328b2d9\"></div>",
     renderMode: 'dom',
     dimensions: { width: '100%', minHeight: 160 },
   },
@@ -109,8 +120,8 @@ export const ADSTERRA_CONFIG: Record<string, AdUnitConfig> = {
   scholarships_banner_300x250: {
     placement: 'scholarships_banner_300x250',
     adType: 'banner_300x250',
-    enabled: false,
-    code: ``, // <-- PASTE REAL ADSTERRA 300x250 BANNER CODE HERE
+    enabled: true,
+    code: "<script>\natOptions = {\n'key' : '0f33690cf56118e521125c48bacde0be',\n'format' : 'iframe',\n'height' : 250,\n'width' : 300,\n'params' : {}\n};\n</script>\n<script src=\"https://www.highrevenueformat.com/0f33690cf56118e521125c48bacde0be/invoke.js\"></script>",
     renderMode: 'iframe',
     dimensions: { width: 300, height: 250, minHeight: 250 },
   },
@@ -127,8 +138,8 @@ export const ADSTERRA_CONFIG: Record<string, AdUnitConfig> = {
   jobs_native: {
     placement: 'jobs_native',
     adType: 'native_banner',
-    enabled: false,
-    code: ``, // <-- PASTE REAL ADSTERRA NATIVE BANNER CODE HERE
+    enabled: true,
+    code: "<script async=\"async\" data-cfasync=\"false\" src=\"https://pl31569467.profitableratecpmnetwork.com/dcf69a0ffa89b1b9bc9f964ec328b2d9/invoke.js\"></script>\n\n<div id=\"container-dcf69a0ffa89b1b9bc9f964ec328b2d9\"></div>",
     renderMode: 'dom',
     dimensions: { width: '100%', minHeight: 160 },
   },
@@ -141,8 +152,8 @@ export const ADSTERRA_CONFIG: Record<string, AdUnitConfig> = {
   jobs_banner_300x250: {
     placement: 'jobs_banner_300x250',
     adType: 'banner_300x250',
-    enabled: false,
-    code: ``, // <-- PASTE REAL ADSTERRA 300x250 BANNER CODE HERE
+    enabled: true,
+    code: "<script>\natOptions = {\n'key' : '0f33690cf56118e521125c48bacde0be',\n'format' : 'iframe',\n'height' : 250,\n'width' : 300,\n'params' : {}\n};\n</script>\n<script src=\"https://www.highrevenueformat.com/0f33690cf56118e521125c48bacde0be/invoke.js\"></script>",
     renderMode: 'iframe',
     dimensions: { width: 300, height: 250, minHeight: 250 },
   },
@@ -159,8 +170,8 @@ export const ADSTERRA_CONFIG: Record<string, AdUnitConfig> = {
   news_native: {
     placement: 'news_native',
     adType: 'native_banner',
-    enabled: false,
-    code: ``, // <-- PASTE REAL ADSTERRA NATIVE BANNER CODE HERE
+    enabled: true,
+    code: "<script async=\"async\" data-cfasync=\"false\" src=\"https://pl31569467.profitableratecpmnetwork.com/dcf69a0ffa89b1b9bc9f964ec328b2d9/invoke.js\"></script>\n\n<div id=\"container-dcf69a0ffa89b1b9bc9f964ec328b2d9\"></div>",
     renderMode: 'dom',
     dimensions: { width: '100%', minHeight: 160 },
   },
@@ -173,8 +184,8 @@ export const ADSTERRA_CONFIG: Record<string, AdUnitConfig> = {
   news_banner_468x60: {
     placement: 'news_banner_468x60',
     adType: 'banner_468x60',
-    enabled: false,
-    code: ``, // <-- PASTE REAL ADSTERRA 468x60 BANNER CODE HERE
+    enabled: true,
+    code: "<script>\natOptions = {\n'key' : '41487b53679c0521622c375d3d071f10',\n'format' : 'iframe',\n'height' : 60,\n'width' : 468,\n'params' : {}\n};\n</script>\n<script src=\"https://www.highrevenueformat.com/41487b53679c0521622c375d3d071f10/invoke.js\"></script>",
     renderMode: 'iframe',
     dimensions: { width: 468, height: 60, minHeight: 60 },
   },
@@ -197,6 +208,26 @@ export const ADSTERRA_CONFIG: Record<string, AdUnitConfig> = {
     dimensions: { width: 300, height: 250, minHeight: 250 },
   },
 
+  /** Desktop-only 160x300 unit; not automatically placed in current layouts. */
+  desktop_sidebar_160x300: {
+    placement: 'desktop_sidebar_160x300',
+    adType: 'banner_160x300',
+    enabled: true,
+    code: "<script>\natOptions = {\n'key' : '3e0e0e6df77dd6a350deedd42f5a5e7a',\n'format' : 'iframe',\n'height' : 300,\n'width' : 160,\n'params' : {}\n};\n</script>\n<script src=\"https://www.highrevenueformat.com/3e0e0e6df77dd6a350deedd42f5a5e7a/invoke.js\"></script>",
+    renderMode: 'iframe',
+    dimensions: { width: 160, height: 300, minHeight: 300 },
+  },
+
+  /** Desktop-only 160x600 unit; not automatically placed in current layouts. */
+  desktop_sidebar_160x600: {
+    placement: 'desktop_sidebar_160x600',
+    adType: 'banner_160x600',
+    enabled: true,
+    code: "<script>\natOptions = {\n'key' : '273e14b8aa1ff405e5b0655bfaa3f6a5',\n'format' : 'iframe',\n'height' : 600,\n'width' : 160,\n'params' : {}\n};\n</script>\n<script src=\"https://www.highrevenueformat.com/273e14b8aa1ff405e5b0655bfaa3f6a5/invoke.js\"></script>",
+    renderMode: 'iframe',
+    dimensions: { width: 160, height: 600, minHeight: 600 },
+  },
+
   // ==========================================
   // 6. MOBILE RESPONSIVE PLACEMENT
   // ==========================================
@@ -209,8 +240,8 @@ export const ADSTERRA_CONFIG: Record<string, AdUnitConfig> = {
   mobile_banner_320x50: {
     placement: 'mobile_banner_320x50',
     adType: 'banner_320x50',
-    enabled: false,
-    code: ``, // <-- PASTE REAL ADSTERRA 320x50 BANNER CODE HERE
+    enabled: true,
+    code: "<script>\natOptions = {\n'key' : 'fec1242ef44b78267b8856a420c2028b',\n'format' : 'iframe',\n'height' : 50,\n'width' : 320,\n'params' : {}\n};\n</script>\n<script src=\"https://www.highrevenueformat.com/fec1242ef44b78267b8856a420c2028b/invoke.js\"></script>",
     renderMode: 'iframe',
     dimensions: { width: 320, height: 50, minHeight: 50 },
   },
