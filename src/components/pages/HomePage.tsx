@@ -212,9 +212,13 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Recommended Ad placement: 728x90 Banner below Hero (and optional Mobile Banner) */}
-      <AdSlot placement="homepage_banner_728x90" className="w-full flex justify-center" />
-      <AdSlot placement="mobile_banner_320x50" className="w-full flex justify-center" />
+      {/* Responsive homepage banner: desktop 728x90, mobile 320x50 */}
+      <div className="hidden md:block">
+        <AdSlot placement="homepage_banner_728x90" className="w-full flex justify-center" />
+      </div>
+      <div className="block md:hidden">
+        <AdSlot placement="mobile_banner_320x50" className="w-full flex justify-center" />
+      </div>
 
       {/* 2. LATEST SCHOLARSHIPS (PAKISTANI & GLOBAL) */}
       <section className="py-12 sm:py-16">
@@ -804,8 +808,8 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Ad slot before footer */}
-      <AdSlot placement="footer" />
+      {/* Homepage 300x250 content/footer placement */}
+      <AdSlot placement="homepage_banner_300x250" />
     </div>
   );
 };
