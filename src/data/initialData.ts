@@ -10,6 +10,7 @@ import {
   EventWorkshop,
   AITool,
 } from '../types';
+import { latestInternshipArticle } from './internshipArticle';
 
 export const initialUniversities: UniversityAdmission[] = [
   {
@@ -661,6 +662,7 @@ export const initialEntryTests: EntryTest[] = [
 ];
 
 export const initialArticles: EducationalArticle[] = [
+  latestInternshipArticle,
   {
     id: 'art-1',
     slug: 'top-10-international-scholarships-pakistani-students-2027',
