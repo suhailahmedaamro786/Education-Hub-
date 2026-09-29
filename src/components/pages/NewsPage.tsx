@@ -33,6 +33,18 @@ export const NewsPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
+  const selectedArticle = useMemo(() => {
+    if (!selectedArticleId) return null;
+    return articles.find(a => a.id === selectedArticleId) || null;
+  }, [articles, selectedArticleId]);
+
+  const categories = ['All', 'Scholarships', 'Admissions', 'Tech & AI', 'Study Tips', 'Career Guidance'];
+
+  const selectedArticle = useMemo(() => {
+    if (!selectedArticleId) return null;
+    return articles.find(a => a.id === selectedArticleId) || null;
+  }, [articles, selectedArticleId]);
+
   useEffect(() => {
     const syncArticleRoute = () => {
       const path = selectedArticle ? `/news/${selectedArticle.slug}` : '/news';
@@ -97,13 +109,6 @@ export const NewsPage: React.FC = () => {
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, [selectedArticle, articles, setSelectedArticleId]);
-
-  const categories = ['All', 'Scholarships', 'Admissions', 'Tech & AI', 'Study Tips', 'Career Guidance'];
-
-  const selectedArticle = useMemo(() => {
-    if (!selectedArticleId) return null;
-    return articles.find(a => a.id === selectedArticleId) || null;
-  }, [articles, selectedArticleId]);
 
   const filteredArticles = useMemo(() => {
     return articles.filter(art => {
