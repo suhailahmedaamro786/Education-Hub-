@@ -105,7 +105,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Navigation
   const initialArticleFromPath = (() => {
     if (typeof window === 'undefined') return null;
-    const match = window.location.pathname.match(/^\\/news\\/(.+)$/);
+    const match = window.location.pathname.match(/^\/news\/(.+)$/);
     if (!match) return null;
     const slug = decodeURIComponent(match[1]);
     return initialArticles.find(article => article.slug === slug) || null;
