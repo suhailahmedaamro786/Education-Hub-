@@ -103,8 +103,16 @@ const STORAGE_KEYS = {
 
 export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Navigation
-  const [currentView, setCurrentView] = useState<string>('home');
-  const [selectedArticleId, setSelectedArticleId] = useState<string | null>(null);
+  const initialArticleFromPath = (() => {
+    if (typeof window === 'undefined') return null;
+    const match = window.location.pathname.match(/^\\/news\\/(.+)$/);
+    if (!match) return null;
+    const slug = decodeURIComponent(match[1]);
+    return initialArticles.find(article => article.slug === slug) || null;
+  })();
+
+  const [currentView, setCurrentView] = useState<string>(initialArticleFromPath ? 'news' : (typeof window !== 'undefined' && window.location.pathname === '/news' ? 'news' : 'home'));
+  const [selectedArticleId, setSelectedArticleId] = useState<string | null>(initialArticleFromPath?.id || null);
   const [selectedEntryTestId, setSelectedEntryTestId] = useState<string | null>(null);
 
   // Search & Modals
