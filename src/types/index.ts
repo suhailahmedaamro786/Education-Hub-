@@ -156,6 +156,11 @@ export interface EducationalArticle {
   status: StatusType;
   views: number;
   internships?: InternshipOpportunity[];
+  seoTitle?: string;
+  metaDescription?: string;
+  canonicalUrl?: string;
+  ogTitle?: string;
+  ogDescription?: string;
 }
 
 export interface StudyMaterial {
