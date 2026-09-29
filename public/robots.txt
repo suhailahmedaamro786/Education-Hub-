@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://education-hub-learn-grow-succeed.ai.studio/sitemap.xml

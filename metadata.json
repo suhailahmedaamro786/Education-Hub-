@@ -1,0 +1,8 @@
+{
+  "name": "Education Hub - Learn • Grow • Succeed",
+  "description": "Comprehensive educational platform for Pakistani & international students. Find admissions, scholarships, jobs, entry tests, study notes, AI tools & student calculators.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
