@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://education-hub-learn-grow-succeed.ai.studio/sitemap.xml
+Sitemap: https://education-hub-dusky.vercel.app/sitemap.xml
