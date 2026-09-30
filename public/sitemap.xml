@@ -5,75 +5,81 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <!-- Education Hub Main Pages -->
   <url>
-    <loc>https://education-hub-learn-grow-succeed.ai.studio/</loc>
+    <loc>https://education-hub-dusky.vercel.app/</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://education-hub-learn-grow-succeed.ai.studio/admissions</loc>
+    <loc>https://education-hub-dusky.vercel.app/admissions</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://education-hub-learn-grow-succeed.ai.studio/scholarships</loc>
+    <loc>https://education-hub-dusky.vercel.app/scholarships</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://education-hub-learn-grow-succeed.ai.studio/jobs</loc>
+    <loc>https://education-hub-dusky.vercel.app/jobs</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://education-hub-learn-grow-succeed.ai.studio/entry-tests</loc>
+    <loc>https://education-hub-dusky.vercel.app/entry-tests</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://education-hub-learn-grow-succeed.ai.studio/news</loc>
+    <loc>https://education-hub-dusky.vercel.app/news</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://education-hub-learn-grow-succeed.ai.studio/notes</loc>
+    <loc>https://education-hub-dusky.vercel.app/notes</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://education-hub-learn-grow-succeed.ai.studio/ai-tech</loc>
+    <loc>https://education-hub-dusky.vercel.app/ai-tech</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://education-hub-learn-grow-succeed.ai.studio/hackathons</loc>
+    <loc>https://education-hub-dusky.vercel.app/hackathons</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://education-hub-learn-grow-succeed.ai.studio/events</loc>
+    <loc>https://education-hub-dusky.vercel.app/events</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://education-hub-learn-grow-succeed.ai.studio/student-tools</loc>
+    <loc>https://education-hub-dusky.vercel.app/student-tools</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://education-hub-learn-grow-succeed.ai.studio/ai-tools</loc>
+    <loc>https://education-hub-dusky.vercel.app/ai-tools</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://education-hub-dusky.vercel.app/news/latest-internships-pakistan-2026</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>
