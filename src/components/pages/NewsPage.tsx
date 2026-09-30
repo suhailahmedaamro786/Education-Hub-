@@ -217,7 +217,11 @@ export const NewsPage: React.FC = () => {
                   <Bookmark className="w-4 h-4" />
                 </button>
                 <button
-                  onClick={() => openShareModal(selectedArticle.title, window.location.href, selectedArticle.category)}
+                  onClick={() => openShareModal(
+                    selectedArticle.title,
+                    selectedArticle.canonicalUrl || `https://education-hub-dusky.vercel.app/news/${selectedArticle.slug}`,
+                    selectedArticle.category
+                  )}
                   className="p-2 rounded-xl border border-slate-200 text-slate-500 hover:bg-slate-50 transition-colors"
                   title="Share article"
                 >
@@ -245,7 +249,7 @@ export const NewsPage: React.FC = () => {
                     </span>
                   </div>
                   <p className="text-sm text-slate-300 mt-3 leading-relaxed">
-                    Only opportunities confirmed as open on an official employer or government source are listed here.
+                    Internship availability can change quickly. Candidates should verify the employer's current listing before applying.
                   </p>
                 </div>
 
