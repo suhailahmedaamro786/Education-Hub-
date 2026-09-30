@@ -120,7 +120,7 @@ export interface InternshipOpportunity {
   title: string;
   company: string;
   location: string;
-  workMode: 'On-site' | 'Hybrid' | 'Remote' | 'Not specified by the employer';
+  workMode: 'On-site' | 'Hybrid' | 'Remote' | 'On-site & Hybrid' | 'Remote / Full-time' | 'Not specified by the employer';
   eligibility: string;
   education: string;
   skills: string;
