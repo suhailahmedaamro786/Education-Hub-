@@ -80,6 +80,7 @@ export const NewsPage: React.FC = () => {
     setOg('og:title', selectedArticle?.ogTitle || selectedArticle?.seoTitle || selectedArticle?.title || 'Education Hub – Learn • Grow • Succeed');
     setOg('og:description', selectedArticle?.ogDescription || description);
     setOg('og:type', selectedArticle ? 'article' : 'website');
+    setOg('og:url', selectedArticle?.canonicalUrl || (window.location.origin + (selectedArticle ? `/news/${selectedArticle.slug}` : '/news')));
 
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!canonical) {
