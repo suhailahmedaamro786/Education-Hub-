@@ -14,6 +14,7 @@ import {
   GlobalSearchResult,
   StatusType,
 } from '../types';
+import { latestInternshipArticle } from '../data/internshipArticle';
 import {
   initialUniversities,
   initialScholarships,
@@ -144,7 +145,15 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [scholarships, setScholarships] = useState<Scholarship[]>(() => loadState(STORAGE_KEYS.SCHOLARSHIPS, initialScholarships));
   const [jobs, setJobs] = useState<JobInternship[]>(() => loadState(STORAGE_KEYS.JOBS, initialJobs));
   const [entryTests, setEntryTests] = useState<EntryTest[]>(() => loadState(STORAGE_KEYS.TESTS, initialEntryTests));
-  const [articles, setArticles] = useState<EducationalArticle[]>(() => loadState(STORAGE_KEYS.ARTICLES, initialArticles));
+  const [articles, setArticles] = useState<EducationalArticle[]>(() => {
+    const stored = loadState<EducationalArticle[]>(STORAGE_KEYS.ARTICLES, initialArticles);
+    const migrated = stored.map(article =>
+      article.slug === latestInternshipArticle.slug ? latestInternshipArticle : article
+    );
+    return migrated.some(article => article.slug === latestInternshipArticle.slug)
+      ? migrated
+      : [latestInternshipArticle, ...migrated];
+  });
   const [studyMaterials, setStudyMaterials] = useState<StudyMaterial[]>(() => loadState(STORAGE_KEYS.MATERIALS, initialStudyMaterials));
   const [techArticles, setTechArticles] = useState<TechArticle[]>(() => loadState(STORAGE_KEYS.TECH, initialTechArticles));
   const [hackathons, setHackathons] = useState<CompetitionHackathon[]>(() => loadState(STORAGE_KEYS.HACKATHONS, initialHackathons));
